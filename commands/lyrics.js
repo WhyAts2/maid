@@ -5,22 +5,22 @@ const sendError = require("../util/error");
 module.exports = {
   info: {
     name: "lyrics",
-    description: "Get lyrics for the currently playing song",
+    description: "Şu anda çalan şarkının sözlerini alın",
     usage: "[lyrics]",
     aliases: ["ly"],
   },
 
   run: async function (client, message, args) {
     const queue = message.client.queue.get(message.guild.id);
-    if (!queue) return sendError("There is nothing playing.",message.channel).catch(console.error);
+    if (!queue) return sendError("Oynatılan hiçbir şey yok.",message.channel).catch(console.error);
 
     let lyrics = null;
 
     try {
       lyrics = await lyricsFinder(queue.songs[0].title, "");
-      if (!lyrics) lyrics = `No lyrics found for ${queue.songs[0].title}.`;
+      if (!lyrics) lyrics = `${queue.songs[0].title} için şarkı sözü bulunamadı.`;
     } catch (error) {
-      lyrics = `No lyrics found for ${queue.songs[0].title}.`;
+      lyrics = `${queue.songs[0].title} için şarkı sözü bulunamadı.`;
     }
 
     let lyricsEmbed = new MessageEmbed()
