@@ -4,7 +4,7 @@ const sendError = require("../util/error");
 module.exports = {
   info: {
     name: "loop",
-    description: "Toggle music loop",
+    description: "Müzik döngüsünü aç / kapat",
     usage: "loop",
     aliases: ["l"],
   },
@@ -16,10 +16,10 @@ module.exports = {
             return message.channel.send({
                 embed: {
                     color: "GREEN",
-                    description: `🔁  **|**  Loop is **\`${serverQueue.loop === true ? "enabled" : "disabled"}\`**`
+                    description: `🔁  **|**  Loop **\`${serverQueue.loop === true ? "açıldı" : "kapatıldı"}\`**`
                 }
             });
         };
-    return sendError("There is nothing playing in this server.", message.channel);
+    return sendError("Bu sunucuda oynatılan hiçbir şey yok.", message.channel);
   },
 };
