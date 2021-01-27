@@ -1,5 +1,5 @@
 ## 📝 Abone Ol
-Twitch Kanalıma Abone Olmayı Unutmayın <3 <img src="https://e7.pngegg.com/pngimages/96/315/png-clipart-twitchcon-streaming-media-television-show-pixel-twitch-purple-television.png" width="30px"> Gitmek İçin Buraya [Tıkla](https://www.twitch.tv/whyats2)
+Twitch Kanalıma Abone Olmayı Unutmayın <3 <img src="https://img.favpng.com/21/13/19/league-of-legends-twitch-streaming-media-video-game-livestream-png-favpng-Z3aB9hfZ0ySgxmtCs0gRFFgMV_t.jpg" width="30px"> Gitmek İçin Buraya [Tıkla](https://www.twitch.tv/whyats2)
 
 ## 📸 Bilgiler
 
