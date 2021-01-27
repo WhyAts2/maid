@@ -1,6 +1,9 @@
-module.exports = async (client) => {//youtube/NoblesYT
+module.exports = async (client) => {
   console.log(`[API] Logged in as ${client.user.username}`);
-  await client.user.setActivity("Youtube/NoblesYT", { //Oynuyor Kısmı
-    type: "WATCHING",//LISTENING, WATCHING, PLAYING, STREAMING
+  await client.user.setPresence({ activity:{
+              name: 'XAYAH',
+              type: "STREAMING",
+              url: "https://www.twitch.tv/whyats2"
+      }
   });
 };
