@@ -3,7 +3,7 @@ const { MessageEmbed } = require('discord.js')
 module.exports = {
     info: {
         name: "help",
-        description: "To show all commands",
+        description: "Tüm komutları gösterir",
         usage: "[command]",
         aliases: ["commands", "help me", "pls help"]
     },
@@ -17,10 +17,10 @@ module.exports = {
         })
 
         let embed = new MessageEmbed()
-        .setAuthor("Commands of "+client.user.username, "https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/Music.gif")
+        .setAuthor(client.user.username+" 'in komutları", "https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/Music.gif")
         .setColor("BLUE")
         .setDescription(allcmds)
-        .setFooter(`To get info of each command you can do ${process.env.PREFIX}help [command] | Maked by Nobles#3226`)
+        .setFooter(`Yapabileceğiniz her komut hakkında bilgi almak için: ${process.env.PREFIX}help [command] | Maked by WhyAts2艾™#9311`)
 
         if(!args[0])return message.channel.send(embed)
         else {
