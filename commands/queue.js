@@ -4,7 +4,7 @@ const sendError = require("../util/error");
 module.exports = {
   info: {
     name: "queue",
-    description: "To show the server songs queue",
+    description: "Sunucu şarkıları sırasını göstermek için",
     usage: "",
     aliases: ["q", "list", "songlist", "song-list"],
   },
@@ -13,10 +13,10 @@ module.exports = {
  
   const permissions = message.channel.permissionsFor(message.client.user);
     if (!permissions.has(["MANAGE_MESSAGES", "ADD_REACTIONS"]))
-      return sendError("Missing permission to manage messages or add reactions",message.channel);
+      return sendError("Mesajları yönetme veya reaksiyon ekleme izni eksik",message.channel);
 
     const queue = message.client.queue.get(message.guild.id);
-    if (!queue) return sendError("There is nothing playing in this server.",message.channel)
+    if (!queue) return sendError("Bu sunucuda oynatılan hiçbir şey yok.",message.channel)
 
     let currentPage = 0;
     const embeds = generateQueueEmbed(message, queue.songs);
@@ -77,15 +77,15 @@ function generateQueueEmbed(message, queue) {
   
     const serverQueue =message.client.queue.get(message.guild.id);
     const embed = new MessageEmbed()
-     .setAuthor("Server Songs Queue", "https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/Music.gif")
+     .setAuthor("Sunucu şarkı listesi", "https://raw.githubusercontent.com/SudhanPlayz/Discord-MusicBot/master/assets/Music.gif")
     .setThumbnail(message.guild.iconURL())
     .setColor("BLUE")
     .setDescription(`${info}`)
-    .addField("Now Playing", `[${queue[0].title}](${queue[0].url})`, true)
-    .addField("Text Channel", serverQueue.textChannel, true)
-    .addField("Voice Channel", serverQueue.voiceChannel, true)
-    .setFooter("Currently Server Volume is "+serverQueue.volume)
-     if(serverQueue.songs.length === 1)embed.setDescription(`No songs to play next add songs by \`\`${process.env.PREFIX}play <song_name>\`\``)
+    .addField("Şuan çalıyor", `[${queue[0].title}](${queue[0].url})`, true)
+    .addField("Yazı Kanalı", serverQueue.textChannel, true)
+    .addField("Ses kanalı", serverQueue.voiceChannel, true)
+    .setFooter("Şuanki ses: "+serverQueue.volume)
+     if(serverQueue.songs.length === 1)embed.setDescription(`Başka şarkı çalınacak şarkı yok  \`\`${process.env.PREFIX}play <song_name>\`\``)
 
     embeds.push(embed);
   }
