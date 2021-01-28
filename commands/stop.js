@@ -4,16 +4,16 @@ const sendError = require("../util/error");
 module.exports = {
   info: {
     name: "stop",
-    description: "To stop the music and clearing the queue",
+    description: "Müziği durdurmak ve kuyruğu temizlemek için",
     usage: "",
     aliases: [],
   },
 
   run: async function (client, message, args) {
     const channel = message.member.voice.channel
-    if (!channel)return sendError("I'm sorry but you need to be in a voice channel to play music!", message.channel);
+    if (!channel)return sendError("Üzgünüm ama müzik çalmak için bir ses kanalında olmanız gerekiyor!", message.channel);
     const serverQueue = message.client.queue.get(message.guild.id);
-    if (!serverQueue)return sendError("There is nothing playing that I could stop for you.", message.channel);
+    if (!serverQueue)return sendError("Senin için durdurabileceğim hiçbir şey yok.", message.channel);
    if(!serverQueue.connection)return
 if(!serverQueue.connection.dispatcher)return
      try{
@@ -21,7 +21,7 @@ if(!serverQueue.connection.dispatcher)return
       } catch (error) {
         message.guild.me.voice.channel.leave();
         message.client.queue.delete(message.guild.id);
-        return sendError(`:notes: The player has stopped and the queue has been cleared.: ${error}`, message.channel);
+        return sendError(`:notes: Kullanıcı çıktı ve sıra temizlendi.: ${error}`, message.channel);
       }
     message.client.queue.delete(message.guild.id);
     serverQueue.songs = [];
