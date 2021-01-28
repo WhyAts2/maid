@@ -4,7 +4,7 @@ const sendError = require("../util/error");
 module.exports = {
   info: {
     name: "skipto",
-    description: "Skip to the selected queue number",
+    description: "Seçili sıra numarasına atlar",
     usage: "skipto <number>",
     aliases: ["st"],
   },
@@ -21,9 +21,9 @@ module.exports = {
         
 
     const queue = message.client.queue.get(message.guild.id);
-    if (!queue) return sendError("There is no queue.",message.channel).catch(console.error);
+    if (!queue) return sendError("Şarkı çalma sırası yok.",message.channel).catch(console.error);
     if (args[0] > queue.songs.length)
-      return sendError(`The queue is only ${queue.songs.length} songs long!`,message.channel).catch(console.error);
+      return sendError(`Sıra sadece ${queue.songs.length} kadar uzun!`,message.channel).catch(console.error);
 
     queue.playing = true;
 
@@ -39,13 +39,13 @@ module.exports = {
       }catch (error) {
         queue.voiceChannel.leave()
         message.client.queue.delete(message.guild.id);
-       return sendError(`:notes: The player has stopped and the queue has been cleared.: ${error}`, message.channel);
+       return sendError(`:notes: Kullanıcı çıktı ve sıra temizlendi.: ${error}`, message.channel);
       }
     
     queue.textChannel.send({
                         embed: {
                             color: "GREEN",
-                            description: `${message.author} ⏭ skipped \`${args[0] - 1}\` songs`
+                            description: `${message.author} ⏭ \`${args[0] - 1}\` şarkı atlanıldı`
                         }
    
                    }).catch(console.error);
